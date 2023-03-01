@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h1>upload</h1>
+
+<form id="upload_form" method="POST" enctype="multipart/form-data">
+    <div>
+        <label for="image_file">写真を撮影してアップロード</label>
+        <input id="image_file" type="file" name="image_file" accept="image/*" capture="camera">
+    </div>
+    <div>
+        <img id="preview">
+    </div>
+    
+    <input type="submit" id="submit_button" value="アップロード" >
+</form>
+<p id="log"></p>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/static/javascript/upload.js"></script>
+
+{% endblock %}
