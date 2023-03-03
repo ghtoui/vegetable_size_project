@@ -1,0 +1,13 @@
+button {
+    width: 5em;
+    height: 2em;
+}
+
+@media screen and (max-width: 480px) {
+    #slideshow {
+      width: 70%;
+    }
+    #graph {
+        width: 70%
+    }
+  }

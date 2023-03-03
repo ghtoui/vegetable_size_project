@@ -1,12 +1,24 @@
 {% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/css/check_vege_style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+{% endblock %}
 {% block content %}
 
 <h1>成長状況</h1>
-<img src="data:image/png;base64,{{ plot_img }}" alt="graph">
+<img id="graph" src="data:image/png;base64,{{ plot_img }}" alt="graph">
 
-<!--
+<img id="slideshow">
+<div>
+    <button id="back" type="button">back</button>
+    <button id="next" type="button">next</button>
+</div>
+<div id="img_container"></div>
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/static/javascript/plot.js"></script>
--->
+<script src="/static/javascript/slideshow.js"></script>
+
 
 {% endblock %}
