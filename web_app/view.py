@@ -8,7 +8,7 @@ def index():
 
 @app.route('/upload')
 def upload():
-    return render_template('/upload.html')
+    return render_template('/upload.html', log = "画像を選択してください")
 
 @app.route('/check_vegetable_growth')
 def check_vegetable_growth():

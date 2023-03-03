@@ -2,11 +2,14 @@
 var input = document.getElementById('image_file');
 var form = document.getElementById('upload_form');
 
+// ファイル選択時
 $('#image_file').on('change', function(event){
+    // 選択されたファイルの読み込み
     var reader = new FileReader();
     reader.onload = function(event) {
         var img = new Image();
         img.onload = function() {
+            // canvasオブジェクトの生成
             var canvas = document.createElement('canvas');
             var ctx = canvas.getContext('2d');
             // リサイズ後の幅と高さ
@@ -15,6 +18,7 @@ $('#image_file').on('change', function(event){
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             // リサイズした画像のURLを取得
             var dataURL = canvas.toDataURL('image/jpg');
+            // URLをimg要素, id=preview の要素にセット
             $('#preview').attr('src', dataURL);
         };
         img.src = event.target.result;
@@ -22,40 +26,30 @@ $('#image_file').on('change', function(event){
     reader.readAsDataURL(event.target.files[0]);
 });
 
-// input要素のchangeイベントを監視
-// ファイルが選択されたら、処理を開始する
-/*
-input.addEventListener('change', function(){
-    postData();
-});
-*/
-
 // 送信ボタンを押してPOSTする
 form.addEventListener('submit', function(event) {
     // submitイベントをキャンセル
     event.preventDefault();
-    postData();
+    postData('/upload', 'img_file', input);
 });
 
 // 送信
-function postData() {
+function postData(path, data_name, input_data) {
     // 選択された画像ファイルを取得
-    var file = input.files[0];
-    var log = document.getElementById('log');
-    log.textContent = 'submit';
+    var file = input_data.files[0];
 
     // FormDataオブジェクトを生成し
     // フォームデータに画像ファイルを追加する
     var formData = new FormData();
-    formData.append('image_file', file);
+    formData.append(data_name, file);
 
     // Ajaxリクエストを作成
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/upload');
+    xhr.open('POST', path);
     xhr.send(formData);
 
     // レスポンスの内容を表示
     xhr.onload = function() {
-        console.log(xhr.responseText);
+       $('#log').text(xhr.responseText);
     };
 }

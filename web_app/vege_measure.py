@@ -6,7 +6,7 @@ class VegeMeasureClass:
     def __init__(self):
         pass
     
-    def measure_vege(self, img):
+    def measure_vege(self, img, marker_height, marker_config_size):
         hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
         
         # 2値化 下限, 上限
@@ -21,13 +21,16 @@ class VegeMeasureClass:
         # 小さい輪郭は除外する
         max_contour = max(contours, key = lambda x: cv.contourArea(x))
         
-        # 矩形を描画
+        # 左上のx, y座標から幅と高さ
         x, y, w, h = cv.boundingRect(max_contour)
         vege_height = h
+        pixel_size = marker_config_size / marker_height
+        vege_size = pixel_size * vege_height
+        
+        # 矩形を描画
         cv.rectangle(img, (x, y), (x + w, y + h), color = (0, 0, 255), thickness = 3)
-        cv.imwrite('web_app/static/images/result.png', img)
-        cv.imwrite('web_app/static/images/result2.png', binary)
-        return vege_height
+        
+        return vege_size
     
     # markerの作成
     def make_aruco_marker(self):
