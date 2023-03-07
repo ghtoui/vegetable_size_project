@@ -3,11 +3,9 @@ button {
     height: 2em;
 }
 
-@media screen and (max-width: 480px) {
-    #slideshow {
-      width: 70%;
-    }
-    #graph {
-        width: 70%
-    }
-  }
+#slideshow {
+  width: 70%;
+}
+#graph {
+    width: 70%
+}
