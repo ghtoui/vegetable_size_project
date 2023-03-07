@@ -11,14 +11,14 @@ ArUcoと野菜を、同じ画像に映るように撮影する。
 1. 野菜の大きさをグラフに描画したもの。
 2. アップロードした画像に、検出結果とアップロード日時を付与した画像
 
-## プレビュー
+<!-- ## プレビュー                                              -->
 
-![index](web_app/static/readme/index.png "index")
-アップロード画面
-![upload](web_app/static/readme/upload.png "upload")
-成長状況確認画面
-![grow_graph](web_app/static/readme/growgraph.png "grow_graph")
-![grow_img](web_app/static/readme/growimg.png "grow_img")
+<!-- ![index](web_app/static/readme/index.png "index")               -->
+<!-- アップロード画面                                        -->
+<!-- ![upload](web_app/static/readme/upload.png "upload")            -->
+<!-- 成長状況確認画面                                        -->
+<!-- ![grow_graph](web_app/static/readme/growgraph.png "grow_graph") -->
+<!-- ![grow_img](web_app/static/readme/growimg.png "grow_img")       -->
 
 ## 環境構築
 
