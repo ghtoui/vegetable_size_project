@@ -37,11 +37,11 @@ def upload_file():
     marker_height = vm.get_marker_height(img)
     if marker_height is None:
         return 'マーカーを検出出来ませんでした。もう一度写真を撮影してください'
-    
+
     vege_size = vm.measure_vege(img, marker_height, marker_size)
-    
+
     cd.insert_data(img, vege_size)
-    
+
     return 'アップロード完了 \n 大きさは約{}cmです'.format(round(vege_size, 2))
 
 @app.route('/get_img', methods = ['GET'])
@@ -49,8 +49,9 @@ def get_img_file():
     # 画像ファイルのパスを全部取得
     file_path = app.config['UPLOAD_FOLDER']
     files = os.listdir(file_path)
-    files = [x for x in files if x.endswith('.jpg') or x.endswith('.png') or x.endswith('jpeg')]
-    
+    # resultから始まって, 拡張子がjpg, png, jpegのものだけ表示する
+    files = [x for x in files if (x.endswith('.jpg') or x.endswith('.png') or x.endswith('jpeg')) and x.startswith('result')]
+
     return jsonify(files)
 
 from web_app import view
