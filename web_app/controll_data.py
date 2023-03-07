@@ -41,7 +41,10 @@ class ControllDataClass:
         # datetimeにして読み込む
         date = pd.to_datetime(self.vege_growth_df.index)
         size = self.vege_growth_df['vege_size']
-        ax.plot(date, size, label = "vege_size")
+        ax.plot(date, size, marker = '.', markersize = 8, label = "vege_size")
+        # x軸を45度回転させて、重ならず見切れないように
+        plt.xticks(rotation = 45)
+        fig.subplots_adjust(bottom = 0.2)
         plt.legend()
 
         # グラフをバイト列に変換してBase64でエンコード
