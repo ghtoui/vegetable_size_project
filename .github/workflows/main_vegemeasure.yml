@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'vegemeasure'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_25DE861862AC4E1BB9C04A4F9E71C0C9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A31F0F9D74864644803375B674CF8CAF }}
